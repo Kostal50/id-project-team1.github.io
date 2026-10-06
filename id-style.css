@@ -8,9 +8,18 @@
 }
 
 .date{
-    font-size: 0.75rem; 
+    font-size: 0.8rem; 
     font-weight: 700;
     text-transform: uppercase;
     color: #8c8c8c;
     margin-bottom: 0.25rem;
+}
+
+.title{ 
+    font-weight: 600;
+    
+}
+
+p{
+    margin-bottom: 1rem;
 }
