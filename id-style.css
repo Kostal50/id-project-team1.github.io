@@ -1,0 +1,16 @@
+.entry{
+    padding: 1rem;
+    border: 0.1rem, solid;
+    border-color:silver;
+    border-radius: 1rem;
+    max-width: 65ch;
+    margin: 1rem;
+}
+
+.date{
+    font-size: 0.75rem; 
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #8c8c8c;
+    margin-bottom: 0.25rem;
+}
