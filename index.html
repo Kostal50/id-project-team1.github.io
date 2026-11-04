@@ -1,11 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <link rel="stylesheet" href="id-style.css">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="theme-color" content="#303951">
+   <title>Semester-Projekt Diary</title>
+   <link rel="id-style" href="id-style.css">
 </head>
 <body>
-<h1>Diary</h1>
-<div class="grid">
+<header class="page-header">
+    <p class="page-kicker">Interaction Design - THU - Gruppe1</p>
+    <h1>Semester-Projekt <span>Diary</span></h1>
+    <p class="page-intro">Eine Sammlung unserer Beobachtungen, Ideen und Schritte.</p>
+</header>
+
+<main class="diary-app">
+    <section class="book-stage" aria-label="Wocheneinträge durchblättern">
+        <button class="week-card side-card previous-card" id="previous-card" type="button" aria-label="Vorheriger Wocheneintrag">
+            <span class="side-card-week"></span>
+        </button>
+        <button class="week-card main-card" id="open-entry" type="button" aria-label="Eintrag Stadtbibliothek Ulm öffnen">
+            <span class="card-overline">UNSER SEMESTERPROJEKT</span>
+            <span class="card-week" id="active-week"></span>
+            <span class="card-title">Stadtbibliothek<br>Ulm</span>
+            <span class="card-action">Eintrag öffnen <span aria-hidden="true">↗</span></span>
+        </button>
+        <button class="week-card side-card next-card" id="next-card" type="button" aria-label="Nächster Wocheneintrag">
+            <span class="side-card-week"></span>
+        </button>
+    </section>
+
+    <nav class="week-navigation" aria-label="Wocheneinträge">
+        <button class="round-button" type="button" data-week="0" aria-label="Woche 1">1</button>
+        <button class="round-button" type="button" data-week="1" aria-label="Woche 2">2</button>
+        <button class="round-button" type="button" data-week="2" aria-label="Woche 3">3</button>
+        <button class="round-button" type="button" data-week="3" aria-label="Woche 4">4</button>
+        <button class="round-button" type="button" data-week="4" aria-label="Woche 5">5</button>
+        <button class="round-button" type="button" data-week="5" aria-label="Woche 6, Eintrag folgt">6</button>
+        <button class="round-button" type="button" data-week="6" aria-label="Woche 7, Eintrag folgt">7</button>
+        <button class="round-button" type="button" data-week="7" aria-label="Woche 8, Eintrag folgt">8</button>
+        <button class="round-button" type="button" data-week="8" aria-label="Woche 9, Eintrag folgt">9</button>
+        <button class="round-button" type="button" data-week="9" aria-label="Woche 10, Eintrag folgt">10</button>
+        <button class="round-button" type="button" data-week="10" aria-label="Woche 11, Eintrag folgt">11</button>
+        <button class="round-button" type="button" data-week="11" aria-label="Woche 12, Eintrag folgt">12</button>
+    </nav>
+
+    <section class="entry-reader" id="entry-reader" aria-live="polite" hidden>
+        <div class="reader-heading">
+            <p class="page-kicker">SEMESTER-PROJEKT DIARY</p>
+            <h2 id="reader-title"></h2>
+        </div>
+        <div class="reader-content" id="reader-content"></div>
+    </section>
+</main>
+
+<!-- Diese Einträge werden von JavaScript in der Leseransicht angezeigt. -->
+<div class="grid" hidden>
 <div class="entry">
 <p class="date">30.09-06.10.2026</p>
 
@@ -238,7 +288,86 @@ Das erwerben von einem neuen Skill, mehr über eine andere Kultur erfahren.
 <br>Sozial: Möglichkeit in andere Länder zu reisen, mit anderen Menschen kommunizieren. 
 <br>Eigenverantwortung/eigene Entscheidung: 
 Wie viel Zeit ich mit den lernen und wiederholen verbringe ist meine eigene Verantwortung und ob ich weiter mache ist auch meine eigene Entscheidung.
-   Auch wenn ich nicht weiter machen will, behalte ich die Information die ich schon gelernt habe.</p>
+</p>
 </div>
+</div>
+
+<script>
+    const sourceEntries = document.querySelectorAll(".grid .entry");
+    const previousCard = document.querySelector("#previous-card");
+    const nextCard = document.querySelector("#next-card");
+    const openEntry = document.querySelector("#open-entry");
+    const activeWeekLabel = document.querySelector("#active-week");
+    const reader = document.querySelector("#entry-reader");
+    const readerTitle = document.querySelector("#reader-title");
+    const readerContent = document.querySelector("#reader-content");
+    const weekButtons = Array.from(document.querySelectorAll(".round-button"));
+    let activeWeek = 0;
+
+    // Buttons ohne passenden Tagebucheintrag bleiben deaktiviert.
+    weekButtons.forEach((button) => {
+        const weekIndex = Number(button.dataset.week);
+        if (weekIndex >= sourceEntries.length) {
+            button.disabled = true;
+            button.title = "Eintrag folgt";
+            button.classList.add("is-upcoming");
+        }
+    });
+
+    function weekLabel(index) {
+        const date = sourceEntries[index].querySelector(".date").textContent.trim();
+        return `Woche ${index + 1} · ${date}`;
+    }
+
+    function updateCard(button, index) {
+        const entryExists = index >= 0 && index < sourceEntries.length;
+        button.hidden = !entryExists;
+        button.disabled = !entryExists;
+
+        if (entryExists) {
+            button.querySelector(".side-card-week").textContent = weekLabel(index);
+            button.setAttribute("aria-label", `${weekLabel(index)} anzeigen`);
+        }
+    }
+
+    function showWeek(index) {
+        // Die Karten und die Navigation verwenden Wochenzahlen ab 0.
+        activeWeek = Math.max(0, Math.min(index, sourceEntries.length - 1));
+        updateCard(previousCard, activeWeek - 1);
+        updateCard(nextCard, activeWeek + 1);
+        activeWeekLabel.textContent = weekLabel(activeWeek);
+        openEntry.setAttribute("aria-label", `${weekLabel(activeWeek)}: Eintrag Stadtbibliothek Ulm öffnen`);
+
+        weekButtons.forEach((button) => {
+            const isActive = Number(button.dataset.week) === activeWeek;
+            button.classList.toggle("is-active", isActive);
+            button.setAttribute("aria-pressed", String(isActive));
+        });
+
+        if (!reader.hidden) {
+            renderEntry();
+        }
+    }
+
+    function renderEntry() {
+        const entry = sourceEntries[activeWeek];
+        readerTitle.textContent = weekLabel(activeWeek);
+        // innerHTML erhält Formatierungen, Listen und Bilder aus dem Eintrag.
+        readerContent.innerHTML = entry.innerHTML;
+        reader.hidden = false;
+        reader.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    previousCard.addEventListener("click", () => showWeek(activeWeek - 1));
+    nextCard.addEventListener("click", () => showWeek(activeWeek + 1));
+    openEntry.addEventListener("click", renderEntry);
+
+    weekButtons.forEach((button) => {
+        button.addEventListener("click", () => showWeek(Number(button.dataset.week)));
+    });
+
+    showWeek(activeWeek);
+</script>
+<footer class="team-members">Aleksandra Kostina, Alisia Grünwald, Lio Kosovali, Julia Ungemach</footer>
 </body>
 </html>
