@@ -8,8 +8,29 @@
    <link rel="stylesheet" href="id-style.css">
 </head>
 <body>
+<nav class="site-navigation" aria-label="Hauptnavigation">
+    <a class="site-nav-link" href="index.html" aria-label="Diary – Startseite" title="Diary" aria-current="page">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 6.5C9.5 4.7 6.8 4 3.5 4v14c3.3 0 6 .7 8.5 2.5"></path>
+            <path d="M12 6.5C14.5 4.7 17.2 4 20.5 4v14c-3.3 0-6 .7-8.5 2.5"></path>
+            <path d="M12 6.5v14"></path>
+        </svg>
+    </a>
+    <a class="site-nav-link" href="interviews.html" aria-label="Interviews" title="Interviews">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="8" r="3.5"></circle>
+            <path d="M5 20c0-3.4 3.1-5.5 7-5.5s7 2.1 7 5.5"></path>
+        </svg>
+    </a>
+    <a class="site-nav-link" href="ai-log.html" aria-label="AI-Log" title="AI-Log">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 3.5h8l4 4V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z"></path>
+            <path d="M14 3.5V8h4M8 12h8M8 15.5h8M8 19h5"></path>
+        </svg>
+    </a>
+</nav>
 <header class="page-header">
-    <p class="page-kicker">Interaction Design - THU - Gruppe1</p>
+    <p class="page-kicker">INTERACTION DESIGN · THU · GRUPPE 1</p>
     <h1>Semester-Projekt <span>Diary</span></h1>
     <p class="page-intro">Eine Sammlung unserer Beobachtungen, Ideen und Schritte.</p>
 </header>
@@ -19,12 +40,19 @@
         <button class="week-card side-card previous-card" id="previous-card" type="button" aria-label="Vorheriger Wocheneintrag">
             <span class="side-card-week"></span>
         </button>
-        <button class="week-card main-card" id="open-entry" type="button" aria-label="Eintrag Stadtbibliothek Ulm öffnen">
+        <div class="week-card main-card">
             <span class="card-overline">UNSER SEMESTERPROJEKT</span>
             <span class="card-week" id="active-week"></span>
             <span class="card-title">Stadtbibliothek<br>Ulm</span>
-            <span class="card-action">Eintrag öffnen <span aria-hidden="true">↗</span></span>
-        </button>
+            <div class="card-controls">
+                <button class="card-action" id="open-entry" type="button" aria-controls="entry-reader">
+                    Eintrag öffnen <span aria-hidden="true">↗</span>
+                </button>
+                <button class="card-action close-entry-button" id="close-entry" type="button" aria-controls="entry-reader">
+                    Eintrag schließen
+                </button>
+            </div>
+        </div>
         <button class="week-card side-card next-card" id="next-card" type="button" aria-label="Nächster Wocheneintrag">
             <span class="side-card-week"></span>
         </button>
@@ -143,11 +171,6 @@ UG. Veranstaltungen & Workshops, Bücherflohmarkt, (Barrierefreies) WC, Babywick
 <p>Die dominierenden Farben der Bibliothek sind Grün und Grau, ergänzt durch kräftige rote Akzente (Treppe, Tür, Sitzsäcke). Im Kinderbereich ist zudem Dunkelblau als stark präsente Farbe vertreten. --
 </p>
 
-<p class="title">Unsere Probleme</p>
-<ul>
-    <li>Mit Github umzugehen</li>
-</ul>
-
 <p>Wir sind auch die weiteren im Skript aufgeführten Fragen durchgegangen:</p>
 
 <p class="title">Attention and the Wandering Mind</p>
@@ -229,7 +252,7 @@ Auf Interview Anfrage mit einem Mitarbeiter der Bibliothek haben wir noch keine 
 
 <p>Jede Person hat bis zu zwei Interviews geführt, ausgeschrieben und ausgewertet. Ein letztes fehlt jedoch noch, aus dem Grund, dass der Termin mit der Bibliothekarin erst an dem 04.11.26, das heißt Morgen zu Zeites des Unterrichtes stattfindet. Dieses wird demnächst zu unseren Ergebnissen hinzugefügt. </p>
 <p>Weiterführend haben wir an den Aufgaben "People in Situations" von letzter Woche weitergearbeitet und diese fertig gestellt.
-<p class="title">People in Situations:</p>
+<p class="title">Defining Problems and Solutions:</p>
 <ul>
 Context Map
       <p> Ausgangssituation: Studentin in Ulm. Sie besucht regelmäßig die Stadtbibliothek um zu lernen. Sie würde sich jedoch gerne an dem Makerspace beteiligen und Menschen mit denselben Interessen finden. Sie interessiert sich für das Nähen und würde gerne neue handwerkliche Fähigkeiten erlernen. Eine eigene Nähmaschine kann sie sich finanziell jedoch nicht leisten. </p>
@@ -251,30 +274,30 @@ Context Map
                   <li>Emotionen</li>
    <p> Neugier auf Makerspace, Motivation etwas Neues zu lernen, Wunsch nach Unterstützung, Hoffnung Menschen mit denselben Interessen zu finden </p>
 </ul>
-      <img src="./myFolder/Journey Map.png" height="400" widht="800">
+      <img src="Journey Map.png" height="400" widht="800">
 </p>
 <p>Folgend haben wir uns ebenfalls auf die restlichen aufgelisteten Aufgaben der Woche fokusiert. </p>
       
 <p class="title">Defining Problems and Solutions:</p>
 <ul>
     <li>From Could to Should</li>
-<img src="./myFolder/From could to should.png">
+<img src="From could to should.png">
    
     <li>Problems as Capabilities</li>
-<img src="./myFolder/Problems as Capabilities.png">
+<img src="Problems as Capabilities.png">
     <li>Producing options: How might we</li>
-<img src="./myFolder/producing options-how might we.png">
+<img src="./producing options-how might we.png">
     <li>Features in moments</li>
-<img src="./myFolder/Features in Moments.png">
+<img src="Features in Moments.png">
     <li>Two Axes</li>
-<img src="./myFolder/two axes.png">
+<img src="two axes.png">
 </ul>
 <p class="title">Models, States and Errors:</p>
-<img src="./myFolder/Models, States and Errors.png">
+<img src="Models, States and Errors.png">
 
 
 <p class="title">Wanting and Motivation:</p>
-<img src="./myFolder/Wanting and Motivation.png">
+<img src="Wanting and Motivation.png">
 
    <p class="title">Reward, Belonging and Autonomy:</p>
 <ul>
@@ -290,6 +313,11 @@ Das erwerben von einem neuen Skill, mehr über eine andere Kultur erfahren.
 Wie viel Zeit ich mit den lernen und wiederholen verbringe ist meine eigene Verantwortung und ob ich weiter mache ist auch meine eigene Entscheidung.
 </p>
 </div>
+<div class="entry">
+    <p class="date">04.11-10.11.2026</p>
+    <p class="title">Woche 6 – Platzhalter</p>
+    <p>Hier kommt der Tagebucheintrag für Woche 6 hin hihi.</p>
+</div>
 </div>
 
 <script>
@@ -297,6 +325,7 @@ Wie viel Zeit ich mit den lernen und wiederholen verbringe ist meine eigene Vera
     const previousCard = document.querySelector("#previous-card");
     const nextCard = document.querySelector("#next-card");
     const openEntry = document.querySelector("#open-entry");
+    const closeEntry = document.querySelector("#close-entry");
     const activeWeekLabel = document.querySelector("#active-week");
     const reader = document.querySelector("#entry-reader");
     const readerTitle = document.querySelector("#reader-title");
@@ -307,7 +336,14 @@ Wie viel Zeit ich mit den lernen und wiederholen verbringe ist meine eigene Vera
     // Buttons ohne passenden Tagebucheintrag bleiben deaktiviert.
     weekButtons.forEach((button) => {
         const weekIndex = Number(button.dataset.week);
-        if (weekIndex >= sourceEntries.length) {
+        const hasEntry = weekIndex < sourceEntries.length;
+        button.disabled = !hasEntry;
+
+        if (hasEntry) {
+            button.setAttribute("aria-label", `Woche ${weekIndex + 1}`);
+            button.removeAttribute("title");
+            button.classList.remove("is-upcoming");
+        } else {
             button.disabled = true;
             button.title = "Eintrag folgt";
             button.classList.add("is-upcoming");
@@ -333,10 +369,11 @@ Wie viel Zeit ich mit den lernen und wiederholen verbringe ist meine eigene Vera
     function showWeek(index) {
         // Die Karten und die Navigation verwenden Wochenzahlen ab 0.
         activeWeek = Math.max(0, Math.min(index, sourceEntries.length - 1));
+        reader.hidden = true;
+        readerContent.textContent = "";
         updateCard(previousCard, activeWeek - 1);
         updateCard(nextCard, activeWeek + 1);
         activeWeekLabel.textContent = weekLabel(activeWeek);
-        openEntry.setAttribute("aria-label", `${weekLabel(activeWeek)}: Eintrag Stadtbibliothek Ulm öffnen`);
 
         weekButtons.forEach((button) => {
             const isActive = Number(button.dataset.week) === activeWeek;
@@ -361,6 +398,10 @@ Wie viel Zeit ich mit den lernen und wiederholen verbringe ist meine eigene Vera
     previousCard.addEventListener("click", () => showWeek(activeWeek - 1));
     nextCard.addEventListener("click", () => showWeek(activeWeek + 1));
     openEntry.addEventListener("click", renderEntry);
+    closeEntry.addEventListener("click", () => {
+        reader.hidden = true;
+        readerContent.textContent = "";
+    });
 
     weekButtons.forEach((button) => {
         button.addEventListener("click", () => showWeek(Number(button.dataset.week)));
