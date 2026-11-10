@@ -1,13 +1,16 @@
+/* Breite der Interviewliste auf grossen Bildschirmen */
 .interviews-page {
     width: min(100%, 850px);
     margin: 34px auto 0;
 }
 
+/* Abstand zwischen den einzelnen Interviews */
 .interview-list {
     display: grid;
     gap: 12px;
 }
 
+/* Hintergrund und Umrandung jeder Interviewkarte */
 .interview-item {
     overflow: hidden;
     border: 1px solid rgba(238, 241, 248, 0.35);
@@ -15,6 +18,7 @@
     background: #39435c;
 }
 
+/* Klickbare Kopfzeile einer Interviewkarte */
 .interview-item summary {
     display: flex;
     min-height: 58px;
@@ -27,6 +31,7 @@
     list-style: none;
 }
 
+/* Eigenes Plus- und Minuszeichen statt des Browser-Standardsymbols */
 .interview-item summary::-webkit-details-marker {
     display: none;
 }
@@ -48,6 +53,7 @@
     outline-offset: -3px;
 }
 
+/* Nummernkreis links neben dem Interviewtitel */
 .interview-number {
     display: grid;
     width: 32px;
@@ -59,6 +65,7 @@
     color: #303951;
 }
 
+/* Text und Auswertungsbild im geöffneten Interview */
 .interview-content {
     padding: 4px 24px 24px 64px;
     color: #e4e6eb;
@@ -82,10 +89,16 @@
     border-radius: 5px;
 }
 
+/* Anpassungen für schmale Bildschirme */
 @media (max-width: 700px) {
     .interviews-page {
         margin-top: 24px;
     }
+
+    .interview-content {
+        padding: 4px 16px 18px;
+    }
+}
 
     .interview-content {
         padding: 4px 16px 18px;
