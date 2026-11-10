@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#303951">
+    <title>AI-Log · Semester-Projekt</title>
+    <link rel="stylesheet" href="id-style.css">
+    <link rel="stylesheet" href="ai-log-style.css">
+</head>
+<body>
+<nav class="site-navigation" aria-label="Hauptnavigation">
+    <a class="site-nav-link" href="index.html" aria-label="Diary – Startseite" title="Diary">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 6.5C9.5 4.7 6.8 4 3.5 4v14c3.3 0 6 .7 8.5 2.5"></path>
+            <path d="M12 6.5C14.5 4.7 17.2 4 20.5 4v14c-3.3 0-6 .7-8.5 2.5"></path>
+            <path d="M12 6.5v14"></path>
+        </svg>
+    </a>
+    <a class="site-nav-link" href="interviews.html" aria-label="Interviews" title="Interviews">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="8" r="3.5"></circle>
+            <path d="M5 20c0-3.4 3.1-5.5 7-5.5s7 2.1 7 5.5"></path>
+        </svg>
+    </a>
+    <a class="site-nav-link" href="ai-log.html" aria-label="AI-Log" title="AI-Log" aria-current="page">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 3.5h8l4 4V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z"></path>
+            <path d="M14 3.5V8h4M8 12h8M8 15.5h8M8 19h5"></path>
+        </svg>
+    </a>
+</nav>
+
+<header class="page-header">
+    <p class="page-kicker">INTERACTION DESIGN · THU · GRUPPE 1</p>
+    <h1>Semester-Projekt <span>AI-Log</span></h1>
+    <p class="page-intro">Dokumentation der Funktionen dieser Diary-Website, die durch Unterstützung des Studio-Visual-Code Assisten Co-Pilot kreiert wurden.</p>
+</header>
+
+<main class="ai-log-content">
+    <ol>
+        <li>
+            <h2>Navigation</h2>
+            <ul>
+                <li>Kennzeichnung der aktuell ausgewählten Seite für die Naviationsleiste durch <code>aria-current</code>.</li>
+                <li>Ergänzung von Beschriftungen und Attributen zur Verbesserung der Zugänglichkeit.</li>
+            </ul>
+        </li>
+        <li>
+            <h2>Gestaltung der Wochenkarten</h2>
+            <ul>
+                <li>Aufbau eines Kartenlayouts mit einer zentralen Hauptkarte und zwei seitlich angeordneten Karten.</li>
+            </ul>
+        </li>
+        <li>
+            <h2>Interaktive Wochen-Navigation</h2>
+            <ul>
+                <li>Verknüpfung der Navigationsbuttons mit den entsprechenden Diary-Einträgen über <code>data-week</code>-Attribute.</li>
+                <li>Verwendung von JavaScript Event Listeners zur Verarbeitung der Klicks.</li>
+            </ul>
+        </li>
+        <li>
+            <h2>Öffnen und Schließen der Diary-Einträge</h2>
+            <ul>
+                <li>Entwicklung einer separaten Leseransicht für die ausführlichen Wocheneinträge.</li>
+                <li>Umsetzung der Öffnen- und Schließen-Funktion mithilfe von JavaScript.</li>
+                <li>Übertragung der jeweiligen Inhalte aus den hinterlegten HTML-Einträgen in die Leseransicht.</li>
+                <li>Verwendung von <code>innerHTML</code>, um bestehende Formatierungen, Listen und Bilder zu übernehmen.</li>
+                <li>Automatisches Scrollen zum geöffneten Eintrag durch <code>scrollIntoView()</code>.</li>
+            </ul>
+        </li>
+        <li>
+            <h2>Dynamische Aktualisierung der Karten</h2>
+            <ul>
+                <li>Erstellung einer Funktion zur Aktualisierung der angezeigten Wocheninformationen.</li>
+                <li>Begrenzung der Navigation auf tatsächlich vorhandene Diary-Einträge.</li>
+            </ul>
+        </li>
+        <li>
+            <h2>Benutzerfreundlichkeit</h2>
+            <ul>
+                <li>Ergänzung von <code>aria-label</code> und <code>aria-pressed</code> zur besseren Kennzeichnung interaktiver Elemente.</li>
+                <li>Verwendung des <code>hidden</code>-Attributs zum Ein- und Ausblenden bestimmter Inhaltsbereiche.</li>
+            </ul>
+        </li>
+        <li>
+            <h2>Ausklappbare Interviewbereiche</h2>
+            <ul>
+                <li>Umsetzung einer interaktiven Interviewübersicht mithilfe der HTML-Elemente <code>details</code> und <code>summary</code>.</li>
+                <li>Ermöglichung des selbstständigen Öffnens und Schließens einzelner Interviews durch Anklicken der jeweiligen Überschrift.</li>
+                <li>Verwendung von <code>loading="lazy"</code>, damit Bilder erst bei Bedarf geladen werden.</li>
+            </ul>
+        </li>
+        <li>
+            <h2>Einheitliches Seitendesign</h2>
+            <ul>
+                <li>Einbindung der gemeinsamen CSS-Datei <code>id-style.css</code>, um die Gestaltung an die übrigen Unterseiten anzupassen.</li>
+            </ul>
+        </li>
+        <li>
+            <h2>Aufbereitung der technischen Dokumentation</h2>
+            <ul>
+                <li>Zusammenfassung der Inhalte nach den verschiedenen angewandten Methoden des Chat-Bots.</li>
+            </ul>
+        </li>
+    </ol>
