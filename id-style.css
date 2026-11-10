@@ -180,6 +180,11 @@ button:focus-visible {
     cursor: default;
 }
 
+.card-heading {
+    margin: auto 0;
+    transform: translateY(-16px);
+}
+
 .card-title {
     margin-top: 21px;
     font-size: clamp(2.4rem, 6vw, 5.3rem);
@@ -212,10 +217,12 @@ button:focus-visible {
 
 .card-controls {
     display: flex;
-    width: 100%;
+    position: absolute;
+    right: clamp(28px, 7vw, 86px);
+    bottom: clamp(18px, 4vw, 32px);
+    left: clamp(28px, 7vw, 86px);
     justify-content: space-between;
     gap: 12px;
-    margin-top: 32px;
 }
 
 .close-entry-button {
@@ -421,6 +428,10 @@ button:focus-visible {
         padding: 18px;
     }
 
+    .card-title {
+        font-size: clamp(1.35rem, 6.5vw, 2.3rem);
+    }
+
     .side-card {
         width: 30%;
         height: 76%;
@@ -447,8 +458,10 @@ button:focus-visible {
     }
 
     .card-controls {
+        right: 18px;
+        bottom: 18px;
+        left: 18px;
         gap: 8px;
-        margin-top: 24px;
     }
 
     .card-action {
